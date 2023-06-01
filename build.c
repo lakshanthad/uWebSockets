@@ -9,10 +9,9 @@ int main(int argc, char **argv) {
     char *CXX = strcpy(calloc(1024, 1), or_else(getenv("CXX"), "g++"));
     char *EXEC_SUFFIX = strcpy(calloc(1024, 1), maybe(getenv("EXEC_SUFFIX")));
 
-    char *EXAMPLE_FILES[] = {"Http3Server", "Broadcast", "HelloWorld", "Crc32", "ServerName",
-    "EchoServer", "BroadcastingEchoServer", "UpgradeSync", "UpgradeAsync"};
+    char *EXAMPLE_FILES[] = {"HelloWorldThreaded"};
 
-    strcat(CXXFLAGS, " -march=native -O3 -Wpedantic -Wall -Wextra -Wsign-conversion -Wconversion -std=c++20 -Isrc -IuSockets/src");
+    strcat(CXXFLAGS, " -march=native -O3 -Wpedantic -Wall -Wextra -Wsign-conversion -Wconversion -std=c++2a -pthread -o threads -Isrc -IuSockets/src");
     strcat(LDFLAGS, " uSockets/*.o");
 
     // By default we use LTO, but Windows does not support it
